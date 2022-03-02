@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/arquivo.css" rel="stylesheet">
+    <title>Conversor de temperatura</title>
+</head>
+
+<body background="img/imagem.jpg">
+
+    <h1>CONVERTER TEMPERATURA</h1>
+    
+    <div class="opcoes">
+        <label>Valor</label>
+        <input id="c" placeholder="Insira o valor" type="number"></input >
+        <label>Temperaturas</label>
+        <select id="a"> 
+        <option value="cel">Celsius</option>
+        <option value="f">Fahrenhreit</option>
+        <option value="k">Kelvin</option>
+        <option value="r">Rankine</option>
+        </select>
+        <label class="botao">
+            <input type="button" value="Converter" id="btn-c">
+        </label>
+    </div>
+
+    <hr size="10">
+
+    <h2>RESULTADO:</h2>
+
+    <div class="op2">
+    <p>Celsius: <input id="Celsius" placeholder="Temperatura em Celsius" type="number"></input></p>
+    <p>Fahrenhreit: <input id="Fahrenhreit" placeholder="Temperatura em Fahrenhreit" type="number"></input></p>
+    <p>Kelvin: <input id="Kelvin" placeholder="Temperatura em Kelvin" type="number"></input></p>
+    <p>Rankine: <input id="Rankine" placeholder="Temperatura em Rankine" type="number"></input></p>
+    </div>
+      
+      <script>
+            document.querySelector("#btn-c").onclick=function() {
+            var conv
+            conv=document.getElementById('c')
+            var conversao=parseInt(conv.value)
+            var val 
+            val=document.getElementById('a')
+            if(val.value=='cel'){
+                var fa
+                fa=((conversao*1.8)+32)
+                var fa2
+                fa2=Math.trunc(fa)
+                var kel
+                kel=(conversao+273)
+                var kel2
+                kel2=Math.trunc(kel)
+                var ran
+                ran=(conversao+273.15)*1.8
+                var ran2
+                ran2=Math.trunc(ran)
+                document.querySelector("#Fahrenhreit").value=fa2+"°F"
+                document.querySelector("#Celsius").value=conversao+"°C"
+                document.querySelector("#Kelvin").value=kel2+" K"
+                document.querySelector("#Rankine").value=ran2+"°Ra"      
+            }
+
+        else if(val.value=='f'){
+                var cel 
+                cel=(conversao-32)/1.8
+                var cel2
+                cel2=Math.trunc(cel)
+                var kel
+                kel=(conversao-32)*1.8+273
+                var kel2
+                kel2=Math.trunc(kel)
+                var ran
+                ran=conversao+459.67
+                var ran2
+                ran2=Math.trunc(ran)
+                document.querySelector("#Celsius").value=cel2+"°C"
+                document.querySelector("#Fahrenhreit").value=conversao+"°F"
+                document.querySelector("#Kelvin").value=kel2+" K"
+                document.querySelector("#Rankine").value=ran2+"°Ra"
+            }
+
+        else if(val.value=="k"){
+                var cel
+                cel=conversao-273
+                var cel2
+                cel2=Math.trunc(cel)
+                var fa
+                fa=(conversao-273)*1.8+32
+                var fa2
+                fa2=Math.trunc(fa)
+                var ran
+                ran=conversao*1.8
+                var ran2
+                ran2=Math.trunc(ran)
+                document.querySelector("#Celsius").value=cel2+"°C"
+                document.querySelector("#Fahrenhreit").value=fa2+"°F"
+                document.querySelector("#Rankine").value=ran2+"°Ra"
+                document.querySelector("#Kelvin").value=conversao+" K"
+            }
+
+        else if(val.value=="r"){
+                var cel
+                cel=(conversao/8)-273.15
+                var cel2
+                cel2=Math.trunc(cel)
+                var fa
+                fa=conversao-459.67
+                var fa2
+                fa2=Math.trunc(fa)
+                var kel
+                kel=conversao/1.8
+                var kel2
+                kel2=Math.trunc(kel)
+                document.querySelector("#Celsius").value=cel2+" °C"
+                document.querySelector("#Fahrenhreit").value=fa2+" °F"
+                document.querySelector("#Kelvin").value=kel2+" K"
+                document.querySelector("#Rankine").value=conversao+" °Ra"
+
+            }
+          }
+      </script>
+</body>
+</html>
